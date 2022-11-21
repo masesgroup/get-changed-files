@@ -1,17 +1,17 @@
 {
   "name": "get-changed-files",
   "description": "GitHub action that gets all changed files in a pull request or push.",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "private": true,
-  "author": "Jitterbit, Inc.",
+  "author": "Jitterbit, Inc.", "MASES s.r.l."
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jiterbit/get-changed-files.git"
+    "url": "git+https://github.com/masesgroup/get-changed-files.git"
   },
-  "homepage": "https://github.com/jitterbit/get-changed-files#readme",
+  "homepage": "https://github.com/masesgroup/get-changed-files#readme",
   "bugs": {
-    "url": "https://github.com/jitterbit/get-changed-files/issues"
+    "url": "https://github.com/masesgroup/get-changed-files/issues"
   },
   "keywords": [
     "GitHub",
