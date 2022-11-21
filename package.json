@@ -3,7 +3,7 @@
   "description": "GitHub action that gets all changed files in a pull request or push.",
   "version": "1.2.0",
   "private": true,
-  "author": "Jitterbit, Inc.", "MASES s.r.l."
+  "author": "Jitterbit, Inc. & MASES s.r.l.",
   "license": "MIT",
   "repository": {
     "type": "git",
