@@ -32,7 +32,7 @@
     "build": "tsc",
     "clean": "rimraf dist/**/* lib/**/*",
     "format": "prettier --write **/*.ts",
-    "format:check": "prettier --check **/*.ts",
+	"format-check": "prettier --check \"{,!(node_modules)/**/}*.ts\"",
     "lint": "eslint src/**/*.ts",
     "package": "ncc build",
     "test": "jest",
