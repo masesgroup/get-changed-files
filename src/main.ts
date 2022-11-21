@@ -1,5 +1,6 @@
 import * as core from '@actions/core'
-import {context, GitHub} from '@actions/github'
+import {getOctokit} from '@actions/github'
+import {context} from '@actions/github'
 
 type Format = 'space-delimited' | 'csv' | 'json'
 type FileStatus = 'added' | 'modified' | 'removed' | 'renamed'
@@ -7,7 +8,7 @@ type FileStatus = 'added' | 'modified' | 'removed' | 'renamed'
 async function run(): Promise<void> {
   try {
     // Create GitHub client with the API token.
-    const client = new GitHub(core.getInput('token', {required: true}))
+    const client = getOctokit(core.getInput('token', {required: true}))
     const format = core.getInput('format', {required: true}) as Format
 
     // Ensure that the format parameter is set properly.
@@ -24,15 +25,18 @@ async function run(): Promise<void> {
     // Define the base and head commits to be extracted from the payload.
     let base: string | undefined
     let head: string | undefined
+    let basehead: string | undefined
 
     switch (eventName) {
       case 'pull_request':
         base = context.payload.pull_request?.base?.sha
         head = context.payload.pull_request?.head?.sha
+        basehead = base + '...' + head
         break
       case 'push':
         base = context.payload.before
         head = context.payload.after
+        basehead = base + '...' + head
         break
       default:
         core.setFailed(
@@ -59,11 +63,17 @@ async function run(): Promise<void> {
 
     // Use GitHub's compare two commits API.
     // https://developer.github.com/v3/repos/commits/#compare-two-commits
-    const response = await client.repos.compareCommits({
-      base,
-      head,
+    //    const response = await client.repo.compareCommits({
+    //      base,
+    //      head,
+    //      owner: context.repo.owner,
+    //      repo: context.repo.repo
+    //    })
+
+    const response = await client.request('GET /repos/{owner}/{repo}/compare/{basehead}{?page,per_page}', {
       owner: context.repo.owner,
-      repo: context.repo.repo
+      repo: context.repo.repo,
+      basehead: basehead
     })
 
     // Ensure that the request was successful.
@@ -183,7 +193,9 @@ async function run(): Promise<void> {
     // For backwards-compatibility
     core.setOutput('deleted', removedFormatted)
   } catch (error) {
-    core.setFailed(error.message)
+    let message = 'Unknown Error'
+    if (error instanceof Error) message = error.message
+    core.setFailed(message)
   }
 }
 
