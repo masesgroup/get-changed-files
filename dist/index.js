@@ -192,7 +192,7 @@ function run() {
             core.setOutput('deleted', removedFormatted);
         }
         catch (error) {
-            let message = 'Unknown Error';
+            let message = 'Unknown Error: unable to get error mesage';
             if (error instanceof Error)
                 message = error.message;
             core.setFailed(message);
