@@ -1,6 +1,6 @@
-name: Get All Changed Files
-description: Get all of the files changed/modified in a pull request or push's commits.
-author: Jitterbit, Inc.
+name: Retrieve All Changed Files
+description: Retrieve all of the files changed/modified in a pull request or push's commits.
+author: MASES s.r.l. (orginal author Jitterbit, Inc.)
 branding:
   icon: file
   color: purple
