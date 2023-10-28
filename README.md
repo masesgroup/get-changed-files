@@ -2,10 +2,10 @@
   <a href="https://github.com/masesgroup/retrieve-changed-files/actions"><img alt="masesgroup/retrieve-changed-files status" src="https://github.com/masesgroup/retrieve-changed-files/workflows/Test/badge.svg"></a>
 </p>
 
-# Get All Changed Files
+# Retrieve All Changed Files
 
-Get all of the files changed/modified in a pull request or push's commits.
-You can choose to get all changed files, only added files, only modified files, only removed files, only renamed files, or all added and modified files.
+Retrieve all of the files changed/modified in a pull request or push's commits.
+You can choose to retrieve all changed files, only added files, only modified files, only removed files, only renamed files, or all added and modified files.
 These outputs are available via the `steps` output context.
 The `steps` output context exposes the output names `all`, `added`, `modified`, `removed`, `renamed`, and `added_modified`.
 
@@ -24,29 +24,29 @@ See [action.yml](action.yml)
 
 # Scenarios
 
-- [Get all changed files as space-delimited](#get-all-changed-files-as-space-delimited)
-- [Get all added and modified files as CSV](#get-all-added-and-modified-files-as-csv)
-- [Get all removed files as JSON](#get-all-removed-files-as-json)
+- [Retrieve all changed files as space-delimited](#retrieve-all-changed-files-as-space-delimited)
+- [Retrieve all added and modified files as CSV](#retrieve-all-added-and-modified-files-as-csv)
+- [Retrieve all removed files as JSON](#retrieve-all-removed-files-as-json)
 
-## Get all changed files as space-delimited
+## Retrieve all changed files as space-delimited
 
 If there are any files with spaces in them, then this method won't work and the step will fail.
 Consider using one of the other formats if that's the case.
 
 ```yaml
 - id: files
-  uses: masesgroup/retrieve-changed-files@v2
+  uses: masesgroup/retrieve-changed-files@v3
 - run: |
     for changed_file in ${{ steps.files.outputs.all }}; do
       echo "Do something with this ${changed_file}."
     done
 ```
 
-## Get all added and modified files as CSV
+## Retrieve all added and modified files as CSV
 
 ```yaml
 - id: files
-  uses: masesgroup/retrieve-changed-files@v2
+  uses: masesgroup/retrieve-changed-files@v3
   with:
     format: 'csv'
 - run: |
@@ -56,11 +56,11 @@ Consider using one of the other formats if that's the case.
     done
 ```
 
-## Get all removed files as JSON
+## Retrieve all removed files as JSON
 
 ```yaml
 - id: files
-  uses: masesgroup/retrieve-changed-files@v2
+  uses: masesgroup/retrieve-changed-files@v3
   with:
     format: 'json'
 - run: |
