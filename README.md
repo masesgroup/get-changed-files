@@ -14,7 +14,7 @@ The `steps` output context exposes the output names `all`, `added`, `modified`, 
 See [action.yml](action.yml)
 
 ```yaml
-- uses: masesgroup/retrieve-changed-files@v2
+- uses: masesgroup/retrieve-changed-files@v3
   with:
     # Format of the steps output context.
     # Can be 'space-delimited', 'csv', or 'json'.
