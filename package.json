@@ -57,7 +57,7 @@
     "jest-circus": "^29.3.1",
     "js-yaml": "^4.1.0",
     "prettier": "^2.7.1",
-    "rimraf": "^3.0.2",
+    "rimraf": "^5.0.5",
     "ts-jest": "^29.1.1",
     "typescript": "^5.2.2"
   }
